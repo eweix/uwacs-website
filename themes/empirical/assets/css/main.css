@@ -1,0 +1,82 @@
+:root {
+  font-family:
+    'Helvetica',
+    'Helvetica Neue',
+    -apple-system-ui,
+    sans-serif;
+
+  --text-color: #222;
+
+  --base-font-size: 1em;
+  --phi: 1.618033988749;
+  --s-3: calc(var(--base-font-size) * pow(var(--phi), -3));
+  --s-2: calc(var(--base-font-size) * pow(var(--phi), -2));
+  --s-1: calc(var(--base-font-size) * pow(var(--phi), -1));
+  --s0: calc(var(--base-font-size) * pow(var(--phi), 0));
+  --s1: calc(var(--base-font-size) * pow(var(--phi), 1));
+  --s2: calc(var(--base-font-size) * pow(var(--phi), 2));
+  --s3: calc(var(--base-font-size) * pow(var(--phi), 3));
+  --s4: calc(var(--base-font-size) * pow(var(--phi), 4));
+  --s5: calc(var(--base-font-size) * pow(var(--phi), 5));
+  --s6: calc(var(--base-font-size) * pow(var(--phi), 6));
+}
+
+body {
+  color: var(--text-color);
+  font-family: var(--font-family);
+  font-size: 14pt;
+  line-height: 1.5;
+  margin-bottom: var(--s1);
+  max-width: 768px;
+}
+
+header {
+  border-bottom: 1px solid #222;
+  margin-bottom: var(--s2);
+}
+
+footer {
+  border-top: 1px solid #222;
+  margin-top: var(--s2);
+}
+
+h1 {
+  font-size: var(--s2);
+}
+
+h2 {
+  font-size: var(--s1);
+}
+
+h3 {
+  font-size: var(--s0);
+}
+
+article {
+  font-size: var(--s0);
+}
+
+a {
+  color: #00e;
+  text-decoration: none;
+}
+
+nav ul {
+  display: flex;
+}
+
+nav ul li {
+  display: flex;
+  padding: var(--s-3);
+}
+
+nav a {
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+@media screen and (max-width: 500px) {
+  body {
+    font-size: 10pt;
+  }
+}
