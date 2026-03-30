@@ -2,3 +2,5 @@ baseURL = 'https://uwacs.org'
 languageCode = 'en-us'
 title = 'American Chemical Society @ UW-Madison'
 theme = 'empirical'
+
+timezone = "America/Chicago"
