@@ -1,0 +1,13 @@
+{{- if in .Params.categories "Journal Club" -}}
+  {{- $todaydate := .Params.Date -}}
+  {{ $posts := where .Site.RegularPages "Type" "events" }}
+  {{- $.Scratch.Set "postCounter" 1 -}}
+  {{- range $posts -}}
+    {{- if in .Params.categories "Journal Club" -}}
+      {{- if gt $todaydate .Params.Date -}}
+        {{- $.Scratch.Add "postCounter" 1 -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+  {{- $.Scratch.Get "postCounter" -}}
+{{- end -}}

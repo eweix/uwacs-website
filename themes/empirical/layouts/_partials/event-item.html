@@ -1,0 +1,41 @@
+<article class="event">
+  <!-- print title  -->
+  {{ if in .Params.categories "Journal Club" }}
+    <h3><a href="{{ .RelPermalink }}">Journal Club #{{- partial "post-counter.html" . -}}: {{ .Title }}</a></h3>
+  {{ else }}
+    <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+  {{ end }}
+
+
+  <!-- print meeting time -->
+  {{ with .Date }}
+    <li>
+      Meeting Time:
+      {{ $dateMachine := . | time.Format "2006-01-02T15:04:05-07:00" }}
+      <time datetime="{{ $dateMachine }}">
+        {{ .Format "January 2, 2006 at 3:04 PM" }}
+      </time>
+    </li>
+  {{ end }}
+
+
+  <!-- Print meeting location -->
+  {{ with .Params.location }}
+    <li>
+      Meeting Location:
+      {{ . }}
+    </li>
+  {{ end }}
+
+
+  <!-- If journal club meeting, show paper DOI -->
+  {{ if in .Params.categories "Journal Club" }}
+    {{- with .Params.doi -}}
+      DOI: <a href="https://doi.org/{{ . }}" target="_blank">{{ . }}</a>
+    {{ end }}
+  {{ end }}
+
+
+  <!-- Show event summary -->
+  {{ .Summary }}
+</article>
