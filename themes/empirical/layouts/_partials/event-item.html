@@ -1,7 +1,7 @@
 <article class="event">
   <!-- print title  -->
   {{ if in .Params.categories "Journal Club" }}
-    <h3><a href="{{ .RelPermalink }}">Journal Club #{{- partial "post-counter.html" . -}}: {{ .Title }}</a></h3>
+    <h3>Journal Club #{{- partial "post-counter.html" . -}}: {{ .Title }}</h3>
   {{ else }}
     <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
   {{ end }}
