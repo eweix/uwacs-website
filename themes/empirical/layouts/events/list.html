@@ -1,6 +1,6 @@
 {{ define "main" }}
   {{ .Content }}
-  {{ $futureEvents := (where .Pages.ByDate.Reverse "Date" "ge" now)}}
+  {{ $futureEvents := (where .Pages.ByDate "Date" "ge" now)}}
   {{ with $futureEvents }}
     <h2>Upcoming Events</h2>
     {{ range . }}
