@@ -4,3 +4,6 @@ title = 'American Chemical Society @ UW-Madison'
 theme = 'empirical'
 
 timezone = "America/Chicago"
+
+[outputs]
+  section = ["HTML", "RSS", "Calendar"]

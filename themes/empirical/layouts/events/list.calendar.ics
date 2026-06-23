@@ -1,0 +1,27 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//UW-Madison CS//Events//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+{{- range .Pages }}
+{{- $start := .Date.UTC }}
+{{- $end := $start.Add (time.ParseDuration "1h") }}
+{{- with .Params.end_date }}
+{{-   $end = (time.AsTime .).UTC }}
+{{- end }}
+BEGIN:VEVENT
+UID:{{ .Permalink }}
+DTSTAMP:{{ now.UTC.Format "20060102T150405Z" }}
+DTSTART:{{ $start.Format "20060102T150405Z" }}
+DTEND:{{ $end.Format "20060102T150405Z" }}
+SUMMARY:{{ if in .Params.categories "Journal Club" }}Journal Club{{ else }}{{ .Title }}{{ end }}
+{{- with .Params.location }}
+LOCATION:{{ . }}
+{{- end -}}
+{{- if in .Params.categories "Journal Club" }}
+DESCRIPTION:Paper: {{ .Title }}{{ with .Params.doi }}\nDOI: https://doi.org/{{ . }}{{ end }}
+{{- end }}
+URL:{{ .Permalink }}
+END:VEVENT
+{{- end }}
+END:VCALENDAR
