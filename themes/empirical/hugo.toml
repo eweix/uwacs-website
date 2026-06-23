@@ -8,8 +8,8 @@ title = 'My New Hugo Site'
     weight = 10
 
   [[menus.main]]
-    name = 'Posts'
-    pageRef = '/posts'
+    name = 'Events'
+    pageRef = '/events'
     weight = 20
 
 [module]

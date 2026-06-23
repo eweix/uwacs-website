@@ -1,7 +1,19 @@
 {{ define "main" }}
   {{ .Content }}
-  <h2>Events</h2>
-  {{ range .Pages.ByDate.Reverse }}
-    {{ partial "event-item.html" . }}
+  {{ $futureEvents := (where .Pages.ByDate.Reverse "Date" "ge" now)}}
+  {{ with $futureEvents }}
+    <h2>Upcoming Events</h2>
+    {{ range . }}
+      {{ partial "event-item.html" . }}
+    {{ end }}
+  {{ end }}
+
+  <!-- get pages in reverse chronological order with date in the past -->
+  {{ $pastEvents := (where .Pages.ByDate.Reverse "Date" "lt" now)}}
+  {{ with $pastEvents }}
+    <h2>Past Events</h2>
+    {{ range . }}
+      {{ partial "event-item.html" . }}
+    {{ end }}
   {{ end }}
 {{ end }}

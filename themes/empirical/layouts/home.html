@@ -1,7 +1,8 @@
 {{ define "main" }}
   {{ .Content }}
-  {{ with (where site.RegularPages.ByDate.Reverse "Section" "events") }}
-    <h2>Events</h2>
+  {{ $futureEvents := (where (where site.RegularPages.ByDate.Reverse "Date" "ge" now) "Section" "events")}}
+  {{ with $futureEvents }}
+    <h2>Upcoming Events</h2>
     {{ range . }}
       {{ partial "event-item.html" . }}
     {{ end }}
